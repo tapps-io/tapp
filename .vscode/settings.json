@@ -1,0 +1,27 @@
+{
+  "css.validate": false,
+  "docthis.includeMemberOfOnClassMembers": false,
+  "docthis.includeMemberOfOnInterfaceMembers": false,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "files.insertFinalNewline": true,
+  "highlight.regexes": {
+    "(Lang\\.[\\wåäöÅÄÖ.]+)": {
+      "color": "#98c379"
+    },
+    "(\\/\\/ ?(todo|ToDo|TODO):.+)": {
+      "color": "#ffa8e0"
+    }
+  },
+  "html.format.wrapAttributes": "force",
+  "search.exclude": {
+    "**/node_modules": true,
+    "dist": true
+  },
+  "stylelint.configOverrides": {
+    "ignoreFiles": "dist/**"
+  },
+  "stylelint.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

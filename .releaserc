@@ -1,0 +1,21 @@
+{
+  "dryRun": false,
+  "ci": false,
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "config": "./tools/changelog.js"
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "config": "./tools/changelog.js"
+      }
+    ],
+    "@semantic-release/changelog",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ]
+}

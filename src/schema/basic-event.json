@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Basic Event",
+  "type": "object",
+  "properties": {
+    "hook": {
+      "type": "string"
+    },
+    "optional": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["hook"]
+}

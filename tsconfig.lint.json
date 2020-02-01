@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "babel.config.js",
+    "jest.config.js",
+    "jest.globals.js",
+    "postcss.config.js",
+    "webpack.config.js",
+    "tools/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ]
+}

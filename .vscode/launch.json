@@ -1,0 +1,30 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach tapp - debugging in chrome",
+      "url": "http://localhost:3002*",
+      "webRoot": "${workspaceFolder}/src",
+      "port": 9222,
+      "sourceMaps": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Build tapp - debugging build steps",
+      "program": "${workspaceFolder}/node_modules/webpack/bin/webpack.js"
+      //"args": ["-w"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch tapp server - debugging server build steps",
+      "program": "${workspaceFolder}/node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+    }
+  ]
+}

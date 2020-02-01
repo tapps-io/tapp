@@ -1,0 +1,5 @@
+@import '@trutoo/ui-core/dist/styles/base.css';
+
+body {
+  padding: 2rem;
+}

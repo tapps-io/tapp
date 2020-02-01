@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible"
+    content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0">
+  <title>Demo site for tapp</title>
+  <link rel="icon"
+    href="data:,">
+
+  <!-- Core Style [Testing] -->
+  <link href="https://tapps.io/main.css"
+    rel="stylesheet" />
+
+  <!-- Theme [Testing] -->
+  <link href="https://tapps.io/variables.css"
+    rel="stylesheet">
+
+  <!-- Core Scripts [Testing] -->
+  <script src="https://tapps.io/main.js"></script>
+
+  <!-- Tapp Config -->
+  <%= htmlWebpackPlugin.options.tappConfig %>
+
+</head>
+
+<body>
+
+  <noscript>
+    <strong>We're sorry but src doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+
+  <div class="<%= htmlWebpackPlugin.options.hook %>"></div>
+
+  <!-- Require rendering for dynamic updates -->
+  <script>window.shouldRender = true;</script>
+
+</body>
+
+</html>

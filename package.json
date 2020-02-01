@@ -1,0 +1,120 @@
+{
+  "name": "@tapps-io/tapp",
+  "version": "0.0.0",
+  "private": true,
+  "keywords": [
+    "trutoo",
+    "tapp",
+    "tiny app",
+    "fragment"
+  ],
+  "description": "Base tapp to build upon.",
+  "author": {
+    "name": "Trutoo AB",
+    "url": "https://www.trutoo.com/"
+  },
+  "license": "GPL-3.0",
+  "repository": "https://github.com/tapps-io/tapps-io.tapp.git",
+  "bugs": "https://github.com/tapps-io/tapps-io.tapp/issues",
+  "contributors": [
+    {
+      "name": "Erik Hughes",
+      "email": "erik.hughes@outlook.com",
+      "url": "https://github.com/swiftwork"
+    }
+  ],
+  "browser": "dist/main.js",
+  "render": "dist/main.html",
+  "styles": "dist/main.css",
+  "files": [
+    "dist/"
+  ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "node tools/commit-msg.js"
+    }
+  },
+  "scripts": {
+    "prestart": "rimraf dist/*",
+    "prebuild": "npm run prestart",
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "test": "jest",
+    "schema": "node tools/schema-gen.js",
+    "wiki": "node tools/wiki-deploy.js",
+    "prepack": "npm run build -- --mode=production",
+    "release": "npm run test && semantic-release && npm run wiki"
+  },
+  "dependencies": {
+    "@trutoo/ui-core": "1.15.5",
+    "core-js": "3.6.4",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-hot-loader": "4.12.19"
+  },
+  "devDependencies": {
+    "@babel/core": "7.8.4",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-proposal-decorators": "7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "7.8.3",
+    "@babel/plugin-transform-runtime": "7.8.3",
+    "@babel/preset-env": "7.8.4",
+    "@babel/preset-react": "7.8.3",
+    "@babel/preset-typescript": "7.8.3",
+    "@semantic-release/changelog": "5.0.0",
+    "@semantic-release/git": "9.0.0",
+    "@typescript-eslint/eslint-plugin": "2.18.0",
+    "@typescript-eslint/parser": "2.18.0",
+    "acorn-dynamic-import": "4.0.0",
+    "babel-jest": "25.1.0",
+    "babel-loader": "8.0.6",
+    "conventional-changelog-angular": "5.0.6",
+    "css-loader": "3.4.2",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-react": "7.18.0",
+    "file-loader": "5.0.2",
+    "fork-ts-checker-webpack-plugin": "4.0.3",
+    "html-webpack-plugin": "4.0.0-beta.5",
+    "husky": "4.2.1",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "25.1.0",
+    "jest-date-mock": "1.0.8",
+    "jsdom": "16.0.1",
+    "json-schema-to-typescript": "8.0.1",
+    "mini-css-extract-plugin": "0.9.0",
+    "minimist": "1.2.0",
+    "optimize-css-assets-webpack-plugin": "5.0.3",
+    "postcss-import": "12.0.1",
+    "postcss-loader": "3.0.0",
+    "postcss-prefixwrap": "1.12.2",
+    "postcss-preset-env": "6.7.0",
+    "prettier": "1.19.1",
+    "prettier-loader": "3.3.0",
+    "react-docgen": "5.1.0",
+    "react-test-renderer": "16.12.0",
+    "rimraf": "3.0.1",
+    "semantic-release": "17.0.2",
+    "simple-git": "1.131.0",
+    "stylelint": "13.0.0",
+    "stylelint-config-prettier": "8.0.1",
+    "stylelint-config-standard": "19.0.0",
+    "stylelint-webpack-plugin": "1.2.1",
+    "terser-webpack-plugin": "2.3.4",
+    "typescript": "3.7.5",
+    "url-loader": "3.0.0",
+    "webpack": "4.41.5",
+    "webpack-cli": "3.3.10",
+    "webpack-dev-server": "3.10.2",
+    "webpack-log": "3.0.1"
+  },
+  "optionalDependencies": {
+    "@types/jest": "25.1.1",
+    "@types/node": "13.7.0",
+    "@types/react": "16.9.19",
+    "@types/react-dom": "16.9.5",
+    "@types/react-test-renderer": "16.9.2",
+    "@types/webpack-env": "1.15.1"
+  }
+}

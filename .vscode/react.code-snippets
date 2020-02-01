@@ -1,0 +1,42 @@
+{
+  "React TypeScript Full Component": {
+    "prefix": ["rtfc"],
+    "body": [
+      "import React, { Component } from 'react';",
+      "",
+      "interface Props {}",
+      "",
+      "interface State {}",
+      "",
+      "export class ${1:$TM_FILENAME_BASE} extends Component<Props, State> {",
+      "  constructor(props: Props) {",
+      "    super(props);",
+      "",
+      "    this.state = {};",
+      "  }",
+      "",
+      "  public render() {",
+      "    return <div></div>;",
+      "  }",
+      "}",
+      ""
+    ],
+    "description": "A full React component written in TypeScript"
+  },
+  "React TypeScript Pure Component": {
+    "prefix": ["rtpc"],
+    "body": [
+      "import React from 'react';",
+      "",
+      "interface Props {",
+      "  $0",
+      "}",
+      "",
+      "export function ${1:$TM_FILENAME_BASE}({ $0 }: Props) {",
+      "  return <div></div>;",
+      "}",
+      ""
+    ],
+    "description": "A full React component written in TypeScript"
+  }
+}
