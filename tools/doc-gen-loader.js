@@ -49,14 +49,13 @@ function parseSource(source, extension) {
 
 function generateMarkdown(component, source, lang) {
   const sections = [
-    generateNavigation(true),
-    generateTOC(),
+    generateTOC(Object.entries(component.props).sort(), component.methods),
     generateTitle(component.displayName),
     generateDescription(component.description),
     generateProps(component.props, lang),
     generateMethods(component.methods, lang),
     generateSource(source, lang),
-    generateNavigation(false),
+    generateNavigation(component.displayName),
   ];
   return sections.join(`\n`);
 }
@@ -66,7 +65,7 @@ function generateMarkdown(component, source, lang) {
 //------------------------------------------------------------------------------------
 
 function generateTitle(name) {
-  return `# ${name}\n`;
+  return `# \`<${name} />\`\n`;
 }
 
 function generateDescription(description) {
@@ -74,9 +73,9 @@ function generateDescription(description) {
 }
 
 function generateProps(props, lang) {
-  if (!props) return '';
+  if (!props || isEmpty(props)) return '';
   return (
-    `## Props\n\n` +
+    `## :key: Props\n\n` +
     Object.keys(props)
       .sort()
       .map(function(propName) {
@@ -87,9 +86,9 @@ function generateProps(props, lang) {
 }
 
 function generateMethods(methods, lang) {
-  if (!methods) return '';
+  if (!methods || !methods.length) return '';
   return (
-    `## Methods\n\n` +
+    `## :zap: Methods\n\n` +
     methods
       .sort()
       .map(method => generateMethod(method, lang))
@@ -98,15 +97,35 @@ function generateMethods(methods, lang) {
 }
 
 function generateSource(source, lang) {
-  return `## Source\n\n` + mdCode(source, lang);
+  return `## :hammer: Source\n\n` + mdCode(source, lang);
 }
 
-function generateNavigation(top = true) {
-  return (top == false ? '\n---\n' : '') + `Go to [[Home]] or back to [[browse]]` + (top == true ? '\n\n---\n' : '');
+function generateNavigation(name) {
+  return `\n---\nGo to [[Home]] or back to the [Top](#${name.toLowerCase()}-)`;
 }
 
-function generateTOC() {
-  return `**This page**\n\n[TOC]\n\n---\n`;
+function generateTOC(props, methods) {
+  let toc = '**This page**\n\n';
+  if (props && props.length) {
+    toc += '* [Props](#key-props)\n';
+    toc += props
+      .map(([name, prop]) => `  * [${name}](#${name.toLowerCase()}${prop.required ? '-required' : ''})`)
+      .join('\n');
+    toc += '\n';
+  }
+  if (methods && methods.length) {
+    toc += '* [Methods](#zap-methods)\n';
+    toc += methods
+      .map(
+        ({ name, modifiers }) =>
+          `  * [${name}](#${name.toLowerCase()}${modifiers && modifiers.length ? '-' + modifiers.join('-') : ''})`,
+      )
+      .join('\n');
+    toc += '\n';
+  }
+  toc += '* [Source](#hammer-source)\n\n';
+  toc += '---\n';
+  return toc;
 }
 
 //------------------------------------------------------------------------------------
@@ -187,6 +206,10 @@ function mdTable(rows) {
       )
       .join('|\n') + '|'
   );
+}
+
+function isEmpty(obj) {
+  return Object.entries(obj).length === 0 && obj.constructor === Object;
 }
 
 function identifyLang(extension) {

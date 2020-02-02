@@ -4,24 +4,18 @@ const path = require('path');
 const fs = require('fs').promises;
 const argv = require('minimist')(process.argv.slice(2));
 
-async function genHome(docsDir, metadata) {
-  let files = await fs.readdir(docsDir);
-  files = files.filter(file => path.extname(file) === '.md');
-  await fs.writeFile(
-    path.join(docsDir, 'Home.md'),
-    `# Generated documentation for ${metadata.name}
-This is a generated file containing wiki references.
-
-## Links
-${files.map(file => `[[${path.basename(file, '.md')}]]`).join('  \n')}`,
-  );
+async function copyReadme(docsDir) {
+  await fs.copyFile(path.join(process.cwd(), 'README.md'), path.join(docsDir, 'Home.md'));
 }
 
 async function deploy(docsDir) {
   const metadata = require(path.resolve(process.cwd(), 'package.json'));
   const git = require('simple-git/promise')();
   const remotes = await git.getRemotes(true);
-  const remote = (remotes.find(remote => remote.name === 'origin') || remotes[0]).refs.push + '/wiki';
+  const remote = (remotes.find(remote => remote.name === 'origin') || remotes[0]).refs.push.replace(
+    /(?:\.git)?$/,
+    '.wiki.git',
+  );
   const message = `chore(release): v${metadata.version} documentation`;
   try {
     await git.silent(true).raw(['ls-remote', remote]);
@@ -29,7 +23,7 @@ async function deploy(docsDir) {
     if (argv.v || argv.verbose) console.error(err);
     return;
   }
-  await genHome(docsDir, metadata);
+  await copyReadme(docsDir);
   await git.cwd(docsDir);
   await git.init();
   await git.add('*');
