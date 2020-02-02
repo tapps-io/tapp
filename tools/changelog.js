@@ -91,7 +91,8 @@ function getWriterOpts() {
 
       if (typeof commit.subject === 'string') {
         let url;
-        if (context.packageData.bugs) url = context.packageData.bugs.url;
+        if (context.packageData.bugs)
+          url = typeof context.packageData.bugs == 'object' ? context.packageData.bugs.url : context.packageData.bugs;
         else if (context.repository) url = `${context.host}/${context.owner}/${context.repository}/issues/`;
         else url = context.repoUrl;
         if (!url.endsWith('/')) url += '/';
@@ -106,7 +107,7 @@ function getWriterOpts() {
 
         if (context.host) {
           // User URLs.
-          commit.subject = commit.subject.replace(/\B@([a-z0-9](?:-?[a-z0-9/]){0,38})/g, (_, username) => {
+          commit.subject = commit.subject.replace(/\B@([\w0-9](?:-?[\w0-9/]){0,38})/g, (_, username) => {
             if (username.includes('/')) {
               return `@${username}`;
             }
