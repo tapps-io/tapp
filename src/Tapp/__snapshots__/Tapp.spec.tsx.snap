@@ -2,9 +2,9 @@
 
 exports[`[Component]: Tapp should match snapshot 1`] = `
 <div
-  className="tu-container tapp"
+  className="tu-container tapp tu-elevation-1"
 >
-  This is a sample tapp by the name of 
+  This is a tiny app using hook 
   HOOK
 </div>
 `;
