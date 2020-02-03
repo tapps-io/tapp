@@ -2,6 +2,10 @@
 
 This is a tiny app template used for micro-architecture on client side.
 
+## Documentation
+
+Every release of a tiny app generates code documentation and publishes it to the [repositories wiki](../../wiki) found in the tabs above.
+
 ## Installation & Scripts
 
 To get started with your new tiny app you are going to need [Node](https://nodejs.org/en/) and then follow [this template guide](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to create new repository from a template.
@@ -20,24 +24,26 @@ npm install
 
 Bellow are a list of NPM scripts that you can run to aid development.
 
-| Command           | Description                                                           |
-| ----------------- | --------------------------------------------------------------------- |
-| `npm start`       | Starts a dev server hosting the tiny app                              |
-| `npm test`        | Runs [Jest](https://jestjs.io/) tests for quality ensurance           |
-| `npm run build`   | Compiles the code to the `dist/` folder                               |
-| `npm run release` | Compiles and [publishes](#Publishing) the `dist/` to the package feed |
+| Command           | Description                                                 | CI/CD only |
+| ----------------- | ----------------------------------------------------------- | ---------- |
+| `npm start`       | Starts a dev server hosting the tiny app                    | no         |
+| `npm test`        | Runs [Jest](https://jestjs.io/) tests for quality ensurance | no         |
+| `npm run build`   | Compiles the code to the `dist/` folder                     | no         |
+| `npm run schema`  | Converts files in `src/schema` to TypeScript interfaces     | no         |
+| `npm run release` | [Publishes](#Publishing) the `dist/` to the package feed    | yes        |
+| `npm run wiki`    | Publishes the `dist/docs` to the wiki                       | yes        |
 
 Make changes then commit them using:
 
 ```bash
 git add .
-git commit -m "[MESSAGE]" # type(scope): ID-123 subject #flags
+git commit -m "[MESSAGE]" # type(scope): #123 subject #flags
 git push
 ```
 
 | Type                                                            | [Scope]           | [ID]           | Subject  | [Flags]       |
 | --------------------------------------------------------------- | ----------------- | -------------- | -------- | ------------- |
-| feat, fix, perf, revert, docs, style, refactor, test, build, ci | optional `string` | ID-123 or #123 | `string` | repo specific |
+| feat, fix, perf, revert, docs, style, refactor, test, build, ci | optional `string` | #123 or ID-123 | `string` | repo specific |
 
 Now you are ready to build with ❤!
 
