@@ -13,7 +13,7 @@ async function deploy(docsDir) {
   try {
     await fs.access(docsDir);
   } catch (err) {
-    if (argv.v || argv.verbose) console.warn(`No documention generated at ${docsDir}`);
+    if (argv.v || argv.verbose) console.warn(err);
     return;
   }
   if (!process.env.GITHUB_ACTOR)
@@ -31,7 +31,7 @@ async function deploy(docsDir) {
   try {
     await git.silent(true).raw(['ls-remote', url]);
   } catch (err) {
-    if (argv.v || argv.verbose) console.error(err);
+    if (argv.v || argv.verbose) console.warn(err);
     return;
   }
   await copyReadme(docsDir);
