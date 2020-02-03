@@ -47,6 +47,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
 
       - name: Deploy documentation package to GitHub Wiki
-        run: npm run wiki
+        run: npm run wiki -- -v
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
