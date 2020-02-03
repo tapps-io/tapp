@@ -26,6 +26,7 @@
       {
         "assets": [{ "path": "dist/*.tgz", "label": "Tiny app distribution package" }]
       }
-    ]
+    ],
+    "@semantic-release/git"
   ]
 }
