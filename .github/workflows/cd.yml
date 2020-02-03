@@ -28,6 +28,14 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: tapps-io
 
+      - name: Debug npmrc
+        run: |
+          cat .npmrc
+          cat ${GITHUB_WORKSPACE}/.npmrc
+          cat ${RUNNER_TEMP}/.npmrc
+        env:
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+
       - name: Install dependencies as CI
         run: npm ci
         env:
