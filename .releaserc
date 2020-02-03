@@ -15,11 +15,16 @@
       }
     ],
     "@semantic-release/changelog",
-    "@semantic-release/npm",
+    [
+      "@semantic-release/npm",
+      {
+        "tarballDir": "dist"
+      }
+    ],
     [
       "@semantic-release/github",
       {
-        "assets": [{ "path": "dist", "label": "Tiny app distribution package" }]
+        "assets": [{ "path": "dist/*.tgz", "label": "Tiny app distribution package" }]
       }
     ]
   ]

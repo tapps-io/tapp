@@ -40,7 +40,7 @@
     "test": "jest",
     "schema": "node tools/schema-gen.js",
     "wiki": "node tools/wiki-deploy.js",
-    "prepack": "npm run build -- --mode=production",
+    "postversion": "npm run build -- --mode=production",
     "release": "semantic-release"
   },
   "dependencies": {
