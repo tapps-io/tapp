@@ -21,6 +21,9 @@ jobs:
           git config --local user.name "GitHub Action"
           git config --local user.email "action@github.com"
 
+      - name: Debug npmrc
+        run: cat /home/runner/work/_temp/.npmrc
+
       - name: Setting up Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -29,15 +32,12 @@ jobs:
           scope: tapps-io
 
       - name: Debug npmrc
-        run: |
-          cat ${NPM_CONFIG_USERCONFIG}
-        env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: cat /home/runner/work/_temp/.npmrc
 
       - name: Install dependencies as CI
         run: npm ci
         env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
 
       - name: Run tests on packages
         run: npm test
