@@ -37,6 +37,8 @@ async function deploy(docsDir) {
   return { name: full_name, message };
 }
 
+console.log(argv, argv._.length && path.resolve(argv._[0]), process.cwd());
+
 deploy(argv._.length ? path.resolve(argv._[0]) : path.resolve(process.cwd(), 'dist', 'docs'))
   .then(status => {
     if (status) console.log(`\n\x1b[36mDeploying "${status.message}" to wiki for repo ${status.name}\x1b[0m\n`);
