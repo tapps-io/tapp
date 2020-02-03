@@ -30,6 +30,8 @@ jobs:
 
       - name: Install dependencies as CI
         run: npm ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
 
       - name: Run tests on packages
         run: npm test
