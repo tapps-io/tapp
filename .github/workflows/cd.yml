@@ -30,9 +30,7 @@ jobs:
 
       - name: Debug npmrc
         run: |
-          cat .npmrc
-          cat ${GITHUB_WORKSPACE}/.npmrc
-          cat ${RUNNER_TEMP}/.npmrc
+          cat ${NPM_CONFIG_USERCONFIG}
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
 
