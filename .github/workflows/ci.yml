@@ -1,0 +1,40 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v2-beta
+
+      - name: Set up Node.js version 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://npm.pkg.github.com
+          scope: tapps-io
+
+      - name: Append removed .npmrc settings
+        run: |
+          echo "@trutoo:registry=https://npm.pkg.github.com/trutoo" >> ${NPM_CONFIG_USERCONFIG}
+
+      - name: Install dependencies using CI
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+
+      - name: Run tests on tapp
+        run: npm test
+
+      - name: Build tapp
+        run: npm run build

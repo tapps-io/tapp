@@ -40,7 +40,7 @@ jobs:
       - name: Run tests on tapp
         run: npm test
 
-      - name: Publish tapp to GitHub Packages and GitHub Release
+      - name: Build and publish tapp to GitHub Packages and GitHub Release
         run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
