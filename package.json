@@ -39,9 +39,9 @@
     "build": "webpack",
     "test": "jest",
     "schema": "node tools/schema-gen.js",
-    "wiki": "node tools/wiki-deploy.js",
     "postversion": "npm run build -- --mode=production",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "wiki": "node tools/wiki-deploy.js"
   },
   "dependencies": {
     "@trutoo/ui-core": "1.15.5",

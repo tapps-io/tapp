@@ -10,6 +10,12 @@ async function copyReadme(docsDir) {
 }
 
 async function deploy(docsDir) {
+  try {
+    await fs.access(docsDir);
+  } catch (err) {
+    if (argv.v || argv.verbose) console.warn(`No documention generated at ${docsDir}`);
+    return;
+  }
   if (!process.env.GITHUB_ACTOR)
     throw new Error('You must specify an actor whom performs the commit using GITHUB_ACTOR env variable');
   if (!process.env.GITHUB_TOKEN)
@@ -37,12 +43,13 @@ async function deploy(docsDir) {
   return { name: full_name, message };
 }
 
-console.log(argv, argv._.length && path.resolve(argv._[0]), process.cwd());
-
 deploy(argv._.length ? path.resolve(argv._[0]) : path.resolve(process.cwd(), 'dist', 'docs'))
   .then(status => {
     if (status) console.log(`\n\x1b[36mDeploying "${status.message}" to wiki for repo ${status.name}\x1b[0m\n`);
-    else console.warn(`\n\x1b[33mWiki repository does not exist or insufficient rights, skipping deploy\x1b[0m\n`);
+    else
+      console.warn(
+        `\n\x1b[33mNo documentation, wiki repository missing or insufficient rights, skipping deploy\x1b[0m\n`,
+      );
   })
   .catch(err => {
     if (argv.v || argv.verbose) console.error(err);
