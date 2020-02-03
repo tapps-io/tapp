@@ -11,17 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checking out source code
+      - name: Check out source code
         uses: actions/checkout@v2-beta
         with:
           fetch-depth: 0
 
-      - name: Set git user and email
+      - name: Set global git user and email
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
 
-      - name: Setting up Node.js 12.x
+      - name: Set up Node.js version 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
@@ -32,15 +32,15 @@ jobs:
         run: |
           echo "@trutoo:registry=https://npm.pkg.github.com/trutoo" >> ${NPM_CONFIG_USERCONFIG}
 
-      - name: Install dependencies as CI
+      - name: Install dependencies using CI
         run: npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
 
-      - name: Run tests on packages
+      - name: Run tests on tapp
         run: npm test
 
-      - name: Publish public packages
+      - name: Publish tapp to GitHub Packages and GitHub Release
         run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}

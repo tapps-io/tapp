@@ -1,3 +1,5 @@
+![Continuous Delivery](../../workflows/Continuous%20Delivery/badge.svg)
+
 # Tiny app | Tapp
 
 This is a tiny app template used for micro-architecture on client side.
@@ -59,13 +61,13 @@ npm install
 
 ## Publishing
 
-Default behavior is to publish packages to the private package feed configured in the `.npmrc` file. Before publishing, make sure to change the package `"name"` inside the `package.json` file, as well as removing the `"private": true` line. Versioning should respect the following rules:
+Default behavior is to publish packages to the GitHub repositories package feed configured in the `.npmrc` file. Before publishing, make sure to change the package `"name"` and any other descriptive keys inside the `package.json` file, as well as removing the `"private": true` line. This command is intended to be run using a CI/CD pipeline such as GitHub Actions.
 
 ```bash
 npm run release
 ```
 
-This will generate run the tests, build the package, generate a changelog from commits, git tag the release and finally push it to the repository. Semantic release is used so breaking changes result in a major versioning update, features in a minor, and fixes in patches.
+This will generate a changelog from commits, git tag the release and finally push it to the repository. Semantic release is used so breaking changes result in a major versioning update, features in a minor, and fixes in patches.
 
 | Version | Change                                                                         |
 | ------- | ------------------------------------------------------------------------------ |
