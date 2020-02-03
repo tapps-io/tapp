@@ -21,9 +21,6 @@ jobs:
           git config --local user.name "GitHub Action"
           git config --local user.email "action@github.com"
 
-      - name: Debug npmrc
-        run: cat /home/runner/work/_temp/.npmrc
-
       - name: Setting up Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -31,8 +28,9 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: tapps-io
 
-      - name: Debug npmrc
-        run: cat /home/runner/work/_temp/.npmrc
+      - name: Append removed .npmrc settings
+        run: |
+          echo "@trutoo:registry=https://npm.pkg.github.com/trutoo" >> ${NPM_CONFIG_USERCONFIG}
 
       - name: Install dependencies as CI
         run: npm ci
