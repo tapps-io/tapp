@@ -60,6 +60,11 @@ function getWriterOpts() {
         commit.type = 'Bug Fixes';
       } else if (commit.type === 'perf') {
         commit.type = 'Performance Improvements';
+      } else if (discard) {
+        // Move up earlier to filter below
+        return;
+      } else if (commit.type === 'k8s') {
+        commit.type = 'Kubernetes';
       } else if (commit.type === 'revert') {
         commit.type = 'Reverts';
       } else if (commit.type === 'docs') {
@@ -74,11 +79,8 @@ function getWriterOpts() {
         commit.type = 'Build System';
       } else if (commit.type === 'ci') {
         commit.type = 'Continuous Integration';
-      } else if (commit.type === 'k8s') {
-        commit.type = 'Kubernetes';
-      } else if (discard) {
-        // Move up earlier to filter below
-        return;
+      } else if (commit.type === 'chore') {
+        commit.type = 'Chore';
       }
 
       if (commit.scope === '*') {

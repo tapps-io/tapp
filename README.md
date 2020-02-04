@@ -43,9 +43,9 @@ git commit -m "[MESSAGE]" # type(scope): #123 subject #flags
 git push
 ```
 
-| Type                                                            | [Scope]           | [ID]           | Subject  | [Flags]       |
-| --------------------------------------------------------------- | ----------------- | -------------- | -------- | ------------- |
-| feat, fix, perf, revert, docs, style, refactor, test, build, ci | optional `string` | #123 or ID-123 | `string` | repo specific |
+| Type                                                                 | [Scope]           | [ID] | Subject  | [Flags]       |
+| -------------------------------------------------------------------- | ----------------- | ---- | -------- | ------------- |
+| feat, fix, perf, k8s, revert, docs, style, refactor, test, build, ci | optional `string` | #123 | `string` | repo specific |
 
 Now you are ready to build with ❤!
 
@@ -61,26 +61,26 @@ npm install
 
 ## Publishing
 
-Default behavior is to publish packages to the GitHub repositories package feed configured in the `.npmrc` file. Before publishing, make sure to change the package `"name"` and any other descriptive keys inside the `package.json` file, as well as removing the `"private": true` line. This command is intended to be run using a CI/CD pipeline such as GitHub Actions.
+Default behavior is to publish packages to the GitHub repositories package feed configured in the `.npmrc` file. Before publishing, make sure to change the package `"name"` and any other descriptive keys inside the `package.json` file, as well as removing the `"private": true` line. [Semantic release](https://github.com/semantic-release/semantic-release) is used to automatically determine version; breaking changes result in a major versioning update, features in a minor, and fixes/performance in patches. No other types will trigger a release.
+
+| Version | Trigger         | Change    | Application                                                         |
+| ------- | --------------- | --------- | ------------------------------------------------------------------- |
+| `X.1.1` | BREAKING CHANGE | **Major** | Changes to event communication or breaking functionality            |
+| `1.X.1` | feat:           | **Minor** | Changes that adds functionality, but still are backwards compatible |
+| `1.1.X` | fix/perf:       | **Patch** | Changes fixing bugs without functionality additions                 |
+
+> For more info read [Semantic Versioning](https://semver.org/).
+
+This command is **intended to be run using a CI/CD pipeline** such as GitHub Actions. It will generate a changelog from commits, git tag the release and finally push it to the repository.
 
 ```bash
 npm run release
 ```
 
-This will generate a changelog from commits, git tag the release and finally push it to the repository. Semantic release is used so breaking changes result in a major versioning update, features in a minor, and fixes in patches.
-
-| Version | Change                                                                         |
-| ------- | ------------------------------------------------------------------------------ |
-| `X.1.1` | **Major:** changes to event communication or breaking functionality            |
-| `1.X.1` | **Minor:** changes that adds functionality, but still are backwards compatible |
-| `1.1.X` | **Patch:** changes fixing bugs without functionality additions                 |
-
-For more info read [Semantic Versioning](https://semver.org/).
-
 ## Browsers support
 
-This tiny app aims to support the following configuration [browserl.ist](https://browserl.ist/?q=%3E+0.5%25%2C+last+2+versions%2C+not+dead%2C+Firefox+ESR%2C+Chrome+41%2C+IE+10).
+This tiny app aims to support the following configuration [browserl.ist](https://browserl.ist/?q=%3E+0.5%25%2C+last+2+versions%2C+not+dead%2C+Firefox+ESR%2C+Chrome+41%2C+IE+11).
 
 | ![IE / Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png) | ![iOS Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png) | ![Samsung](https://raw.githubusercontent.com/alrra/browser-logos/master/src/samsung-internet/samsung-internet_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Opera Mini](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera-mini/opera-mini_48x48.png) |
 | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| IE10, IE11, Edge                                                                                   | last 2 versions                                                                                        | last 2 versions                                                                                     | last 2 versions                                                                                     | last 2 versions                                                                                                 | last 2 versions                                                                                                          | last 2 versions                                                                                  | last 2 versions                                                                                                 |
+| IE11, Edge                                                                                         | last 2 versions                                                                                        | last 2 versions                                                                                     | last 2 versions                                                                                     | last 2 versions                                                                                                 | last 2 versions                                                                                                          | last 2 versions                                                                                  | last 2 versions                                                                                                 |
