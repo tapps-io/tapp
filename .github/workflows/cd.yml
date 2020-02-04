@@ -21,10 +21,10 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
 
-      - name: Set up Node.js version 12.x
+      - name: Set up Node.js version 13.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 13.x
           registry-url: https://npm.pkg.github.com
           scope: tapps-io
 
