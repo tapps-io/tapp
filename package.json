@@ -76,7 +76,7 @@
     "file-loader": "5.0.2",
     "fork-ts-checker-webpack-plugin": "4.0.3",
     "git-url-parse": "11.1.2",
-    "html-webpack-plugin": "4.0.0-beta.5",
+    "html-webpack-plugin": "4.0.0-beta.11",
     "husky": "4.2.1",
     "identity-obj-proxy": "3.0.0",
     "jest": "25.1.0",
