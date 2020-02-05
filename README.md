@@ -41,7 +41,7 @@ Make changes then commit them using:
 ```bash
 git add .
 git commit -m "[MESSAGE]" # type(scope): #123 subject #flags
-git push origin develop
+git push -u origin develop
 ```
 
 | Type                                                                 | [Scope]           | [ID] | Subject  | [Flags]       |
