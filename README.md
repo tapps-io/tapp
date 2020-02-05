@@ -10,9 +10,9 @@ Every release of a tiny app generates code documentation and publishes it to the
 
 ## Installation & Scripts
 
-To get started with your new tiny app you are going to need [Node](https://nodejs.org/en/) and then follow [this template guide](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to create new repository from a template.
+To get started with your new tiny app you are going to need [Node](https://nodejs.org/en/) and then follow [this template guide](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to create new repository from a template. Recommendation is to also configure branching policies to protect `master` branch from direct pushes without pull-request merges. Follow the [contributing guidelines](./CONTRIBUTING.md) regarding pull-requests.
 
-After creating the new repository attach the template as an upstream remote for syncing updates and create a development branch. Follow the [contributing guidelines](./CONTRIBUTING.md).
+After creating the new repository attach the template as an upstream remote for syncing updates and create a development branch.
 
 ```bash
 git remote add tapp git@github.com:tapps-io/tapps-io.tapp.git
