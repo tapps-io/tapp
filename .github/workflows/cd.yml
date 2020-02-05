@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies using CI
         run: npm ci
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Used in .npmrc to install packages from github
 
       - name: Run tests on tapp
         run: npm test
@@ -43,10 +43,11 @@ jobs:
       - name: Build and publish tapp to GitHub Packages and GitHub Release
         run: npm run release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Used to verify access through semantic release
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Used by standard npm publish
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Used for github releases through semantic release
 
       - name: Deploy documentation package to GitHub Wiki
         run: npm run wiki -- -v
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Used to push to github wiki
