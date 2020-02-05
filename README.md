@@ -12,10 +12,11 @@ Every release of a tiny app generates code documentation and publishes it to the
 
 To get started with your new tiny app you are going to need [Node](https://nodejs.org/en/) and then follow [this template guide](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to create new repository from a template.
 
-After creating the new repository attach the template as an upstream remote for syncing updates.
+After creating the new repository attach the template as an upstream remote for syncing updates and create a development branch. Follow the [contributing guidelines](./CONTRIBUTING.md).
 
 ```bash
 git remote add tapp git@github.com:tapps-io/tapps-io.tapp.git
+git checkout -b develop
 ```
 
 Finally install all dependencies with:
@@ -40,7 +41,7 @@ Make changes then commit them using:
 ```bash
 git add .
 git commit -m "[MESSAGE]" # type(scope): #123 subject #flags
-git push
+git push origin develop
 ```
 
 | Type                                                                 | [Scope]           | [ID] | Subject  | [Flags]       |
