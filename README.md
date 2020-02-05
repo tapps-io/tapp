@@ -55,7 +55,7 @@ Run the following commands to update the starter kit when a new version is relea
 
 ```bash
 git fetch tapp
-git merge tapp/master --no-commit --no-ff
+git merge tapp/master --allow-unrelated-histories --squash --no-commit
 npm install
 ```
 
