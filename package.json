@@ -14,6 +14,8 @@
     "url": "https://www.trutoo.com/"
   },
   "license": "GPL-3.0",
+  "repository": "https://github.com/tapps-io/tapp.git",
+  "bugs": "https://github.com/tapps-io/tapp/issues",
   "contributors": [
     {
       "name": "Erik Hughes",
