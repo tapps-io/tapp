@@ -3,6 +3,10 @@ name: Continuous Integration
 on:
   push:
     branches:
+      - develop
+      - feature/*
+      - release/*
+      - hotfix/*
       - renovate/*
   pull_request:
     branches:

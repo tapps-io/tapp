@@ -10,12 +10,18 @@ Every release of a tiny app generates code documentation and publishes it to the
 
 ## Installation & Scripts
 
-To get started with your new tiny app you are going to need [Node](https://nodejs.org/en/) and then follow [this template guide](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to create new repository from a template.
+To get started with your new tiny app you are going to need [Node](https://nodejs.org/en/) and then follow [this template guide](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to create new repository from a template. Recommendation is to also configure [branch protection rules](../../settings/branches) to limit direct pushes to the `master` branch without passsing status checks or taking it a step futher and requiring pull-request reviews. Follow the [GitHub Flow guidelines](https://guides.github.com/introduction/flow/index.html) regarding workflow.
 
 After creating the new repository attach the template as an upstream remote for syncing updates.
 
 ```bash
 git remote add tapp git@github.com:tapps-io/tapps-io.tapp.git
+```
+
+Then create a new feature branch to commit work to:
+
+```bash
+git checkout -b feature/[NAME]
 ```
 
 Finally install all dependencies with:
@@ -40,12 +46,14 @@ Make changes then commit them using:
 ```bash
 git add .
 git commit -m "[MESSAGE]" # type(scope): #123 subject #flags
-git push
+git push -u origin feature/[NAME]
 ```
 
 | Type                                                                 | [Scope]           | [ID] | Subject  | [Flags]       |
 | -------------------------------------------------------------------- | ----------------- | ---- | -------- | ------------- |
 | feat, fix, perf, k8s, revert, docs, style, refactor, test, build, ci | optional `string` | #123 | `string` | repo specific |
+
+When you are ready either merge branch `feature/[NAME]` to master or create a pull-request depending on branch protection rules.
 
 Now you are ready to build with ❤!
 
