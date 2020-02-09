@@ -95,7 +95,7 @@
     "prettier-loader": "3.3.0",
     "react-docgen": "5.2.0",
     "react-test-renderer": "16.12.0",
-    "rimraf": "3.0.1",
+    "rimraf": "3.0.2",
     "semantic-release": "17.0.2",
     "simple-git": "1.131.0",
     "stylelint": "13.1.0",
