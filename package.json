@@ -97,7 +97,7 @@
     "react-test-renderer": "16.13.0",
     "rimraf": "3.0.2",
     "semantic-release": "17.0.4",
-    "simple-git": "1.131.0",
+    "simple-git": "1.132.0",
     "stylelint": "13.2.1",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-config-standard": "20.0.0",
