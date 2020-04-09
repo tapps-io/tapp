@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@trutoo/ui-core": "1.15.5",
-    "core-js": "3.6.4",
+    "core-js": "3.6.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hot-loader": "4.12.20"
