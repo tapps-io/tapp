@@ -63,7 +63,7 @@
     "@babel/preset-typescript": "7.9.0",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/github": "7.0.5",
-    "@typescript-eslint/eslint-plugin": "2.29.0",
+    "@typescript-eslint/eslint-plugin": "2.30.0",
     "@typescript-eslint/parser": "2.29.0",
     "acorn-dynamic-import": "4.0.0",
     "babel-jest": "25.4.0",
