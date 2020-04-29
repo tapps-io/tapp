@@ -80,7 +80,7 @@
     "html-webpack-plugin": "4.2.1",
     "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
-    "jest": "25.5.1",
+    "jest": "25.5.2",
     "jest-date-mock": "1.0.8",
     "jsdom": "16.2.2",
     "json-schema-to-typescript": "8.2.0",
