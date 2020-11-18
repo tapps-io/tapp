@@ -96,7 +96,7 @@
     "react-docgen": "5.3.1",
     "react-test-renderer": "17.0.1",
     "rimraf": "3.0.2",
-    "semantic-release": "17.2.2",
+    "semantic-release": "17.2.3",
     "simple-git": "2.21.0",
     "stylelint": "13.7.2",
     "stylelint-config-prettier": "8.0.2",
