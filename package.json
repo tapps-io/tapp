@@ -61,7 +61,7 @@
     "@babel/preset-env": "7.12.1",
     "@babel/preset-react": "7.12.1",
     "@babel/preset-typescript": "7.12.1",
-    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/changelog": "6.0.0",
     "@semantic-release/github": "8.0.0",
     "@typescript-eslint/eslint-plugin": "4.6.0",
     "@typescript-eslint/parser": "4.6.0",
